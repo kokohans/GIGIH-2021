@@ -1,0 +1,140 @@
+require_relative 'characters'
+require_relative 'heros'
+require_relative 'mongols'
+
+require_relative 'game'
+
+ghost_of_tsushima = Game.new
+
+jin = Main.new("Jin Sakai", 100, 50)
+yuna = Allies.new("Yuna", 90, 45)
+ishikawa = Allies.new("Sensei Ishikawa", 80, 60)
+
+mongols1 = Archer.new('Mongol Archer', 100, 40)
+mongols2 = Spearman.new('Mongol Spearman', 120, 60)
+mongols3 = Swordman.new('Mongol Swordman', 100, 50)
+
+mongols = [mongols1, mongols2, mongols3]
+allies = [yuna, ishikawa]
+heroes = [jin, yuna, ishikawa]
+
+ghost_of_tsushima.display_char
+
+turn = 1
+
+puts "As Jin Sakai, what do you want to do this turn?"
+puts "1) Attack an enemy"
+puts "2) Heal an ally"
+
+step = gets.to_i
+
+case step
+when 1
+    puts "Which enemy you want to attack"
+    i = 1
+    mongols.each do | mongol |
+        puts "#{i}) #{mongol.name}"
+        i += 1
+    end
+    attack_to = gets.to_i - 1
+    if attack_to >= mongols.length - 1
+        attack_to = mongols.length - 1
+    end
+    jin.attack(mongols[attack_to])
+
+    mongols.each do | mongol |
+        mongols.delete(mongol) if mongol.is_died? || mongol.is_fled?
+    end
+
+    allies.each do | ally |
+        ally.attack(mongols[rand(mongols.length)])
+    end
+
+    mongols.each do | mongol |
+        mongols.delete(mongol) if mongol.is_died? || mongol.is_fled?
+    end
+
+    mongols.each do | mongol |
+        mongol.attack(heroes[rand(heroes.length)])
+    end
+    
+    heroes.each do | hero |
+        puts hero
+    end
+
+    mongols.each do | mongol |
+        puts mongol
+    end
+
+    if mongols.length == 0
+        puts "No more mongols here"
+        puts jin
+        #break
+    elsif jin.is_died?
+        puts "Jin dies"
+        #break
+    end
+
+when 2
+    puts "Which ally you want to heal?"
+    i = 1
+    allies.each do | ally |
+        puts "#{i}) #{ally.name}"
+        i += 1
+    end
+    heal_to = gets.to_i - 1
+    jin.heal(allies[heal_to])
+
+    allies.each do | ally |
+        ally.attack(mongols[rand(mongols.length)])
+    end
+
+    mongols.each do | mongol |
+        mongols.delete(mongol) if mongol.is_died? || mongol.is_fled?
+    end
+
+    mongols.each do | mongol |
+        mongol.attack(heroes[rand(heroes.length)])
+    end
+
+    allies.each do | ally |
+        ally.delete(ally) if ally.is_died?
+    end
+    
+    heroes.each do | hero |
+        puts hero
+    end
+
+end
+
+# loop do 
+
+#     puts "=================Turn #{turn}==========="
+
+#     jin.attack(mongols[rand(mongols.length)])
+    
+#     mongols.each do | mongol |
+#         mongols.delete(mongol) if mongol.is_died? || mongol.is_fled?
+#     end
+
+#     # mongols.each do | mongol |
+#     #     puts mongol
+#     # end
+
+#     mongols.each do | mongol |
+#         mongol.attack(jin)
+#     end
+#     puts jin
+
+#     if mongols.length == 0
+#         puts "No more mongols here"
+#         puts jin
+#         break
+#     elsif jin.is_died?
+#         puts "Jin dies"
+#         break
+#     end
+
+#     puts "\n"
+#     turn+=1
+# end
