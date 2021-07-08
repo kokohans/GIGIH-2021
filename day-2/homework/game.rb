@@ -59,6 +59,7 @@ class Game
     end
 
     def allies_attack_mongols
+        return if @mongols.length <= 0
         @allies.each do | ally |
             ally.attack(@mongols[rand(@mongols.length)])
             clean_mongols

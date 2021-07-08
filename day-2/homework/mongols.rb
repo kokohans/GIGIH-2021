@@ -9,13 +9,22 @@ class Mongols < Characters
 
     def take_damage(damage)
         if @hitpoint <= 50
-            flee if rand(1..10) > 5 
-            return
-        end
-        @hitpoint -= damage
-        if @hitpoint <= 0
-            play_dead
-            return
+            if rand(1..10) > 5
+                flee
+                return
+            else
+                @hitpoint -= damage
+                if @hitpoint <= 0
+                    play_dead
+                    return
+                end
+            end
+        else
+            @hitpoint -= damage
+            if @hitpoint <= 0
+                play_dead
+                return
+            end
         end
     end
 
