@@ -53,7 +53,7 @@ class Game
 
     def mongol_attack_heros
         @mongols.each do | mongol |
-            mongol.attack(@heroes[rand(@heroes.length)])
+            mongol.attack(@heroes[rand(@heroes.length-1)])
             clean_allies
         end
     end
@@ -61,7 +61,7 @@ class Game
     def allies_attack_mongols
         return if @mongols.length <= 0
         @allies.each do | ally |
-            ally.attack(@mongols[rand(@mongols.length)])
+            ally.attack(@mongols[rand(@mongols.length-1)])
             clean_mongols
         end
     end
