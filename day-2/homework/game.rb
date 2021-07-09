@@ -67,11 +67,17 @@ class Game
     end
 
     def jin_attack(attack_to)
+        if attack_to > @mongols.length - 1
+            attack_to = 0
+        end
         @jin.attack(@mongols[attack_to])
         clean_mongols
     end
 
     def jin_heal(heal_to)
+        if heal_to > @allies.length - 1
+            heal_to = 0
+        end
         @jin.heal(@allies[heal_to])
     end
 
