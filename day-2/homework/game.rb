@@ -4,7 +4,7 @@ require_relative 'mongols'
 class Game
 
     def initialize
-        @jin = Main.new("Jin Sakai", 100, 50, 0.2, 8)
+        @jin = Main.new("Jin Sakai", 100, 50, 20, 8)
         @yuna = Allies.new("Yuna", 90, 45)
         @ishikawa = Allies.new("Sensei Ishikawa", 80, 60)
 

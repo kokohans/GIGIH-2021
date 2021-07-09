@@ -16,7 +16,7 @@ class Main < Characters
     end
 
     def heal(ally)
-        puts "#{@name} heals #{ally.name}, restoring 20 hitpoints"
+        puts "#{@name} heals #{ally.name}, restoring #{@mp} hitpoints"
         ally.take_med(@mp)
     end
 end
