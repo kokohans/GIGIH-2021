@@ -43,9 +43,6 @@ loop do
         end
     end
     game_turn+=1
-    if ghost_of_tsushima.check_battlefield
-        puts "Win"
-        break
-    end
+    break if ghost_of_tsushima.check_battlefield
     puts "\n"
 end

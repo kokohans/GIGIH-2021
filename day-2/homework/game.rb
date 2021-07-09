@@ -97,7 +97,14 @@ class Game
     end
 
     def check_battlefield
-        @mongols.length <= 0 || @jin.is_died?
+        if @mongols.length <= 0
+            puts "Win, no more mongols here"
+            return true
+        elsif @jin.is_died?
+            puts "Lose, Jin dies"
+            return true
+        end
+        return false
     end
 
 end
