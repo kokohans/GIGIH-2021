@@ -22,11 +22,6 @@ class Main < Characters
 end
 
 class Allies < Characters
-    def take_damage(damage)
-        t = Characters.instance_method(:take_damage).bind(self)
-        t.call(damage)
-    end
-
     def take_med(mp)
         @hitpoint += mp
     end
