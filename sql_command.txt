@@ -1,0 +1,26 @@
+SHOW DATABASES;
+
+CREATE DATABASE food_oms_db;
+
+USE food_oms_db;
+
+CREATE TABLE categories (id int);
+
+DESCRIBE categories;
+
+ALTER TABLE categories ADD PRIMARY KEY(id);
+
+ALTER TABLE categories ADD name VARCHAR(50);
+
+
+CREATE TABLE items (
+	id int NOT NULL,
+	name varchar(50) DEFAULT NULL,
+	price int DEFAULT 0,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE item_categories(
+	item_id int,
+	category_id int
+);

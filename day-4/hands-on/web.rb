@@ -23,7 +23,7 @@ get '/message/' do
 end
 
 get '/' do
-    'Hello world'
+    "please identify yourself", status 401
 end
 
 post '/login' do
@@ -44,7 +44,7 @@ get '/items/' do
 end
 
 get '/items' do
-    "#{items}"
+    "#{items[0].item}"
 end
 
 post '/items/' do
