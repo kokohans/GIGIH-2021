@@ -1,0 +1,22 @@
+<h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    <% items.each  do | item |%>
+    <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <% if item.category %>
+            <td><%= item.category %></td>
+        <%else%>
+            <td>-</td>
+        <%end%>
+    </tr>
+    <% end %>
+</table>
+</h1>
+<h2>
+<a href='/items/new'>Insert new items</a>
+</h2>

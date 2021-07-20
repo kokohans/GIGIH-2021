@@ -1,0 +1,32 @@
+<div class="container-md">
+    <p class="h3">Edit <%= item.name %></a></p>
+</div>
+<div class="container-md">
+    <form method="POST" action="/items/<%= item.id %>/edit">
+        <div class="row">
+            <div class="col">
+                <input class="form-control" name="name" type="text" placeholder="food name" value="<%= item.name %>">
+            </div>
+            <div class="col">
+                <input class="form-control" name="price" type="text" placeholder="price" value="<%= item.price %>">
+            </div>
+        </div>
+    <br>
+    <div class="row">
+        <div class="col">
+        <% categories.each  do | category |%>
+            <% if item.category == category.name %>
+                <input class="form-check-input" type="radio" id="<%= category.id %>" name="category" value="<%= category.id %>" checked>
+                <label class="form-check-label" for="<%= category.id %>"><%= category.name %></label><br>
+            <% else %>
+                <input class="form-check-input" type="radio" id="<%= category.id %>" name="category" value="<%= category.id %>">
+                <label class="form-check-label" for="<%= category.id %>"><%= category.name %></label><br>
+            <% end %>
+        <% end %>
+        </div>
+        <div class="col">
+            <input class="btn btn-primary" type="submit" value="Update" />
+        </div>
+    </div>
+    </form>
+</div>

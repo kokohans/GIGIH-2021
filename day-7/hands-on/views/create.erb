@@ -1,0 +1,10 @@
+<form method="POST" action="/items/create">
+<input name="name" type="text" >
+<input name="price" type="text" >
+<br>
+<% categories.each  do | category |%>
+    <input type="radio" id="<%= category.id %>" name="category" value="<%= category.id %>">
+    <label for="html"><%= category.name %></label><br>
+<% end %>
+<input type="submit" value="Submit" />
+</form>
