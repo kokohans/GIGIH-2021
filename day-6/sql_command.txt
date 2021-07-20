@@ -1,0 +1,118 @@
+INSERT INTO items (id, name, price) VALUES
+(1, 'Nasi Goreng', 25000);
+
+INSERT INTO items (id, name) VALUES
+(2, 'Air Putih');
+
+INSERT INTO items VALUES
+(3, 'Spaghetti', 40000),
+(4, 'Green Tea', 18000);
+
+SELECT * FROM items;
+
+SELECT id, name FROM items;
+
+ALTER TABLE items MODIFY id INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE categories MODIFY id INT NOT NULL AUTO_INCREMENT;
+
+DESCRIBE items;
+
+INSERT INTO items VALUES (NULL, 'Orange Juice', 15000);
+
+INSERT INTO items (name, price) VALUES
+('Vanilla Ice Cream', 13000),
+('Cordon Bleu', 36000),
+('French Fries', 20000),
+('Manggo Juice', 15000);
+
+SELECT * FROM items WHERE price BETWEEN 15000 AND 25000;
+
+UPDATE items SET name = 'Nasi Goreng Gila' WHERE id = 1;
+
+UPDATE items SET name = 'Ice Water', price = 2000 WHERE id = 1;
+
+INSERT INTO categories (name) VALUES
+('main dish'),
+('beverage'),
+('dessert');
+
+INSERT INTO item_categories (item_id, category_id) VALUES
+(1, 1),
+(2, 2),
+(3, 1),
+(4, 2),
+(5, 2),
+(6, 3),
+(7, 1);
+
+SELECT name, price, item_id FROM items LEFT JOIN item_categories ON item_id = id;
+
+SELECT name, price, item_id FROM items JOIN item_categories ON item_id = id;
+
+SELECT items.id, items.name, items.price, item_categories.category_id FROM items JOIN item_categories ON item_categories.item_id. = items.id;
+
+
+SELECT items.id, items.name, item_categories.category_id FROM items
+JOIN item_categories ON items.id = item_categories.item_id;
+
+
+SELECT items.id, items.name, items.price, categories.name
+FROM items LEFT JOIN item_categories
+ON items.id = item_categories.item_id
+LEFT JOIN categories
+ON item_categories.category_id = categories.id;
+
+
+SELECT items.id, items.name
+FROM items LEFT JOIN item_categories
+ON items.id = item_categories.item_id
+LEFT JOIN categories
+ON item_categories.category_id = categories.id
+WHERE categories.name = 'main dish';
+
+SELECT items.id, items.name, items.price, categories.name
+FROM items LEFT JOIN item_categories
+ON items.id = item_categories.item_id
+LEFT JOIN categories
+ON item_categories.category_id = categories.id
+WHERE categories.name = 'main dish' AND items.price > 30000;
+
+SELECT items.id, items.name, items.price, categories.name
+FROM items LEFT JOIN item_categories
+ON items.id = item_categories.item_id
+LEFT JOIN categories
+ON item_categories.category_id = categories.id;
+
+SELECT items.id, items.name, items.price
+FROM items LEFT JOIN item_categories
+ON items.id = item_categories.item_id
+WHERE items.id NOT IN (SELECT item_id FROM item_categories);
+
+
+
+SELECT categories.id, categories.name, GROUP_CONCAT(items.name), MAX(items.price)
+FROM items JOIN item_categories
+ON items.id = item_categories.item_id
+JOIN categories
+ON categories.id = item_categories.category_id
+GROUP BY categories.id, categories.name;
+
+
+ALTER TABLE item_categories MODIFY item_id INT NOT NULL;
+ALTER TABLE item_categories MODIFY category_id INT NOT NULL;
+
+ALTER TABLE item_categories
+ADD FOREIGN KEY (item_id) REFERENCES items(id);
+
+ALTER TABLE item_categories
+ADD FOREIGN KEY (category_id) REFERENCES categories(id);
+
+CREATE UNIQUE INDEX name
+ON categories (name);
+
+CREATE TABLE items_order(
+	item_id int,
+	qty int
+);
+
+INSERT INTO items_order VALUES(1, 2);
