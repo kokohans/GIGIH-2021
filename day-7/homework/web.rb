@@ -9,7 +9,17 @@ get '/' do
 end
 
 get '/items/' do
-    redirect '/'
+    content_type :json
+    items = get_all_items
+    items_json = items.map do | item |
+        {
+            id: item.id,
+            name: item.name,
+            price: item.price.to_s,
+            category: item.category
+        }
+    end
+    items_json.to_json
 end
 
 get '/items/new' do
