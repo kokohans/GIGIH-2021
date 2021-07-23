@@ -48,7 +48,6 @@ post '/items/:id/edit' do
     old_item.price = price
     old_item.update
     old_item_category.update
-    puts "#{id}, #{name}, #{price}"
     redirect "/items/#{item_id}/"
 end
 
