@@ -1,0 +1,33 @@
+<div class="container">
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+        </tr>
+        <% items.each  do | item |%>
+        <tr>
+            <th scope="row"><%= item.name %></th>
+            <td>Rp <%= item.price %></td>
+            <td>
+                <div class="row">
+                    <div class="col-sm">
+                        <a class="text-decoration-none" href='/items/<%= item.id%>/'>Show</a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="text-decoration-none" href='/items/<%= item.id%>/edit'>Edit</a>
+                    </div>
+                    <div class="col-sm">
+                        <form method="POST" action="/items/<%= item.id %>/delete">
+                        <input class="btn btn-primary" type="submit" value="Delete" />
+                        </form>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+<div class="container">
+<a class="text-decoration-none" href='/items/new'>New items</a>
+</div>

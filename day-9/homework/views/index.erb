@@ -1,0 +1,14 @@
+<table>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+        </tr>
+        <% orders.each  do | order |%>
+        <tr>
+            <th><%= order.reference_no %></th>
+            <td><%= order.customer_name %></td>
+            <td><%= order.date %></td>
+        </tr>
+        <% end %>
+</table>

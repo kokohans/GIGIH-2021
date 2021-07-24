@@ -1,0 +1,16 @@
+<div class="container-md">
+    <p class="h3">Create a new category</a></p>
+</div>
+<div class="container-md">
+        <form method="POST" action="/categories/<%= category.id %>/edit">
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control" name="name" type="text" value="<%= category.name %>">
+                    </div>
+                <br>
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" value="Update" />
+                </div>
+                </div>
+        </form>
+</div>

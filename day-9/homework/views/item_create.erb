@@ -1,0 +1,25 @@
+<div class="container-md">
+    <p class="h3">Create a new item</a></p>
+</div>
+<div class="container-md">
+        <form method="POST" action="/items/">
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control" name="name" type="text" placeholder="food name">
+                    </div>
+                    <div class="col">
+                        <input class="form-control" name="price" type="text" placeholder="price" >
+                    </div>
+                <br>
+                <div class="col">
+                    <% categories.each  do | category |%>
+                        <input class="form-check-input" type="checkbox" id="<%= category.id %>" name="category" value="<%= category.id %>">
+                        <label class="form-check-label" for="html"><%= category.name %></label><br>
+                    <% end %>
+                </div>
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+                </div>
+        </form>
+</div>
