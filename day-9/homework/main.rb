@@ -58,6 +58,7 @@ end
 
 post '/items/' do
     controllers = ItemController.new
+    puts params
     controllers.new_item(params)
     redirect '/'
 end

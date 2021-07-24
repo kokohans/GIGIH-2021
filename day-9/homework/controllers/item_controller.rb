@@ -20,8 +20,10 @@ class ItemController
     def new_item(params)
         new_item = Item.new(params['name'], params['price'])
         new_id = new_item.save
-        new_item_category = Item_category.new(new_id, params['category'])
-        new_item_category.save
+        params['category'].each do | category |
+            new_item_category = Item_category.new(new_id, category)
+            new_item_category.save
+        end
     end
 
     def new_item_form
