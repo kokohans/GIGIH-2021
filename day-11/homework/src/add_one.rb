@@ -11,6 +11,10 @@ class AddOne
         while input[curr_index] > 9 && curr_index <= input.length
             input[curr_index] %= 10
             curr_index+=1
+            if curr_index >= input.length
+                input.push(1)
+                break
+            end
             input[curr_index] += INCREMENT_VAL
         end
 

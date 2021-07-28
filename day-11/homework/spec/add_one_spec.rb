@@ -56,4 +56,32 @@ RSpec.describe AddOne do
         result = add_one.add(arr)
         expect(result).to eq([4,5,6])
     end
+
+    it 'returns [4,4,5,6] if passed [4,4,5,5]' do
+        add_one = AddOne.new
+        arr = [4,4,5,5]
+        result = add_one.add(arr)
+        expect(result).to eq([4,4,5,6])
+    end
+
+    it 'returns [4,4,5,0] if passed [4,4,4,9]' do
+        add_one = AddOne.new
+        arr = [4,4,4,9]
+        result = add_one.add(arr)
+        expect(result).to eq([4,4,5,0])
+    end
+
+    it 'returns [5,0,0,0] if passed [4,9,9,9]' do
+        add_one = AddOne.new
+        arr = [4,9,9,9]
+        result = add_one.add(arr)
+        expect(result).to eq([5,0,0,0])
+    end
+
+    it 'returns [1,0] if passed [9]' do
+        add_one = AddOne.new
+        arr = [9]
+        result = add_one.add(arr)
+        expect(result).to eq([1,0])
+    end
 end
