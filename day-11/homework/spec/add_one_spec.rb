@@ -84,4 +84,11 @@ RSpec.describe AddOne do
         result = add_one.add(arr)
         expect(result).to eq([1,0])
     end
+
+    it 'returns [1,0,0] if passed [9,9]' do
+        add_one = AddOne.new
+        arr = [9,9]
+        result = add_one.add(arr)
+        expect(result).to eq([1,0,0])
+    end
 end
