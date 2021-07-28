@@ -4,11 +4,18 @@ class AddOne
     INCREMENT_VAL = 1
 
     def add(input)
-        input[LAST_INDEX] += INCREMENT_VAL
-        if input[LAST_INDEX] > 9
-            input[LAST_INDEX] %= 10
-            input[-2] += INCREMENT_VAL
+        input = input.reverse
+
+        input[0] += 1
+        if input[0] > 9
+            input[0] %=10
+            input[1] += 1
+            if input[1] > 9
+                input[1] %= 10
+                input[2] += 1
+            end
         end
-        input
+
+        input.reverse
     end
 end
