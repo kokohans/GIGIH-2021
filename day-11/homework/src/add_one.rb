@@ -1,5 +1,6 @@
 class AddOne
     def add(input)
-        [1]
+        input[-1] += 1
+        input
     end
 end
