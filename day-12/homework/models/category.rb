@@ -24,7 +24,7 @@ class Category
         client = create_db_client
         qry_item = client.query("SELECT id, name FROM categories WHERE id=#{id}")
         if qry_item.count > 0
-            return item = Category.new(qry_item.first['name'], qry_item.first['id'],)
+            return item = Category.new(qry_item.first['name'], qry_item.first['id'])
         else 
             nil
         end
@@ -48,6 +48,7 @@ class Category
     def add_item(item_id)
         client = create_db_client
         qry = client.query("INSERT INTO item_categories VALUES(#{item_id}, #{@id})")
+        client.affected_rows
     end
 
     def find_items
@@ -57,11 +58,13 @@ class Category
     def delete
         client = create_db_client
         qry_delete = client.query("DELETE FROM categories WHERE id=#{@id}")
+        client.affected_rows
     end
 
     def update
         client = create_db_client
         qry_category = client.query("UPDATE categories SET name='#{@name}' WHERE id=#{@id}")
+        client.affected_rows
     end
 
     def save

@@ -57,11 +57,13 @@ class Item
     def delete
         client = create_db_client
         qry_delete = client.query("DELETE FROM items WHERE id=#{@id}")
+        client.affected_rows
     end
 
     def update
         client = create_db_client
         qry_category = client.query("UPDATE items SET name='#{@name}', price=#{@price} WHERE id=#{@id}")
+        client.affected_rows
     end
 
     def valid?
@@ -70,25 +72,3 @@ class Item
         true
     end
 end
-
-# class item
-#     attr_accessor :id, :name, :price, :reference_no
-
-#     def initialize(id, name, price, order)
-#         @id = id
-#         @name = name
-#         @price = price
-#         @order = order
-#     end
-
-#     def self.find_by_order(order)
-#         client = create_db_client
-#         res = client.query("SELECT * FROM items WHERE reference_no='#{order}'")
-#         items = Array.new
-#         res.each do | data |
-#             item = Item.new(data['id'], data['name'], data['price'], data['order'])
-#             items.push(item)
-#         end
-#         items
-#     end
-# end
