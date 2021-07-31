@@ -12,8 +12,8 @@ RSpec.describe Category do
 
                 expect(stub_client).to receive(:query).with(stub_query)
                 allow(stub_client).to receive(:query).and_return([
-                    name: "jenis makanan satu", id: 1,
-                    name: "jenis makanan dua", id: 2
+                    {"name" => "jenis makanan satu", "id" => 1},
+                    {"name" => "jenis makanan dua", "id" => 2}
                 ])
 
                 categories = Category.get_all_categories
@@ -49,8 +49,8 @@ RSpec.describe Category do
 
                 expect(stub_client).to receive(:query).with(stub_query)
                 allow(stub_client).to receive(:query).and_return([
-                    name: "jenis makanan satu", id: 1,
-                    name: "jenis makanan dua", id: 2
+                    {"name" => "jenis makanan satu", "id" => 1},
+                    {"name" => "jenis makanan dua", "id" => 2}
                 ])
 
                 categories = Category.get_categories_by_item_id(1)
