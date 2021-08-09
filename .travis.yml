@@ -3,6 +3,10 @@ language: python
 python:
   - "2.7"
 
+branches:
+  only:
+    - main
+
 before_install:
   - openssl aes-256-cbc -K $encrypted_3091c6ae5bf7_key -iv $encrypted_3091c6ae5bf7_iv
     -in id_rsa.pub.enc -out ~\/.ssh/id_rsa.pub -d
@@ -13,5 +17,5 @@ install:
 
 jobs:
   include:
-    - stage: deploy
+    - stage: deploy-staging
       script: ansible-playbook -i ansible/inventory.yml ansible/playbook.yml --user $ANSIBLE_USER --private-key ~./ssh/id_rsa
