@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - name: Execute node setup script
+      become: yes
+      command: touch from-ansible.txt
