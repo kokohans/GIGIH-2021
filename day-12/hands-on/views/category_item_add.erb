@@ -1,0 +1,24 @@
+<div class="container-md">
+    <p class="h3">Add item to <%= category.name %></a></p>
+</div>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+        <% items.each  do | item |%>
+        <tr>
+            <th scope="row"><%= item.name %></th>
+            <td>
+                <div class="row">
+                    <div class="col-sm">
+                        <a class="text-decoration-none" href='/categories/<%= category.id %>/items/new/<%= item.id%>'>Add</a>
+                    </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>

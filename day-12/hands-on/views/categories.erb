@@ -1,0 +1,34 @@
+<div class="container">
+    <table class="table">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+        <% categories.each  do | category |%>
+        <tr>
+            <th scope="row"><%= category.id %></th>
+            <td><%= category.name %></td>
+            <td>
+                <div class="row">
+                    <div class="col-sm">
+                        <a class="text-decoration-none" href='/categories/<%= category.id%>/items'>Show items</a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="text-decoration-none" href='/categories/<%= category.id%>/items/new'>Add items</a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="text-decoration-none" href='/categories/<%= category.id%>/edit'>Edit</a>
+                    </div>
+                    <div class="col-sm">
+                        <a class="text-decoration-none" href='/categories/<%= category.id%>/delete'>Delete</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+<div class="container">
+<a class="text-decoration-none" href='/categories/new'>New Category</a>
+</div>
