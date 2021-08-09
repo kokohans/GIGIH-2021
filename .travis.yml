@@ -9,6 +9,7 @@ branches:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_3091c6ae5bf7_key -iv $encrypted_3091c6ae5bf7_iv -in id_rsa.pub.enc -out ~/.ssh/id_rsa.pub -d
+  - ls -lah ~/.ssh/
   - chmod 400 ~/.ssh/id_rsa
 
 install:
