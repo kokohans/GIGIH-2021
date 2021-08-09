@@ -1,5 +1,4 @@
 - hosts: all
   tasks:
-    - name: Execute node setup script
-      become: yes
-      command: touch from-ansible.txt
+    - name: touch file
+      command: touch from-_$(date '+%Y%m%d-%H%M').txt
