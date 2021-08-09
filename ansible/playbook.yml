@@ -1,4 +1,4 @@
 - hosts: all
   tasks:
     - name: touch file
-      command: touch from-_$(date '+%Y%m%d-%H%M').txt
+      command: touch from-ansible-travis_$(date '+%Y%m%d-%H%M').txt
